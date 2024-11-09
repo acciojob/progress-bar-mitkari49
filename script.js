@@ -1,24 +1,25 @@
+let currentActive = 1;
+
 function clicked(direction) {
   const circles = document.querySelectorAll(".circle");
-  const activeCircle = document.querySelector(".circle.active");
-  const activeIndex = Array.from(circles).indexOf(activeCircle);
 
-  if (direction === "next" && activeIndex < circles.length - 1) {
-    activeCircle.classList.remove("active");
-    circles[activeIndex + 1].classList.add("active");
-    if (activeIndex === circles.length - 2) {
-      document.getElementById("next").disabled = true;
-    }
-    document.getElementById("prev").disabled = false;
-  } else if (direction === "prev" && activeIndex > 0) {
-    activeCircle.classList.remove("active");
-    circles[activeIndex - 1].classList.add("active");
-    if (activeIndex === 1) {
-      document.getElementById("prev").disabled = true;
-    }
-    document.getElementById("next").disabled = false;
+  if (direction === "next" && currentActive < circles.length) {
+    circles[currentActive - 1].classList.remove("active");
+    circles[currentActive].classList.add("active");
+    currentActive++;
+  } else if (direction === "prev" && currentActive > 1) {
+    circles[currentActive - 1].classList.remove("active");
+    circles[currentActive - 2].classList.add("active");
+    currentActive--;
   }
+
+  updateButtons();
 }
 
-// Initial state: Disable the "Previous" button
-document.getElementById("prev").disabled = true;
+function updateButtons() {
+  document.getElementById("prev").disabled = currentActive === 1;
+  document.getElementById("next").disabled = currentActive === document.querySelectorAll(".circle").length;
+}
+
+// Initialize the buttons' disabled state
+updateButtons();

@@ -6,21 +6,21 @@
 <body>
   <div class="container">
     <div class="progress_bar">
-      <div class="circle active">1</div>
+      <div id="circle-1" class="circle active">1</div>
       <div class="bar"></div>
-      <div class="circle">2</div>
+      <div id="circle-2" class="circle">2</div>
       <div class="bar"></div>
-      <div class="circle">3</div>
+      <div id="circle-3" class="circle">3</div>
       <div class="bar"></div>
-      <div class="circle">4</div>
+      <div id="circle-4" class="circle">4</div>
       <div class="bar"></div>
-      <div class="circle">5</div>
+      <div id="circle-5" class="circle">5</div>
     </div>
     <div class="press">
-      <button id="prev" value="prev" onclick="clicked('prev')">Previous</button>
-      <button id="next" value="next" onclick="clicked('next')">Next</button>
+      <button id="prev" onclick="clicked('prev')">Previous</button>
+      <button id="next" onclick="clicked('next')">Next</button>
     </div>
   </div>
-  <script type="text/javascript" src="./script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
